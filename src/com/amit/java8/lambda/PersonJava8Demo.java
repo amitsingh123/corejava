@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class PersonJava8Demo {
     public static void main(String[] args) {
@@ -23,10 +24,19 @@ public class PersonJava8Demo {
         printConditionally(persons,p -> p.getFirstName().startsWith("J"));
     }
 
-    private static void printConditionally(List<Person> persons, Condition condition) {
-        for(Person p : persons){
-            if(condition.test(p))
-                System.out.println(p);
+//    private static void printConditionally(List<Person> persons, Condition condition) {
+//        for(Person p : persons){
+//            if(condition.test(p))
+//                System.out.println(p);
+//        }
+//    }
+
+    // Use java predefined functional interface instead of creating own
+
+    private static void printConditionally(List<Person> persons, Predicate<Person> predicate) {
+        for (Person person : persons) {
+            if (predicate.test(person))
+                System.out.println(person);
         }
     }
 }
