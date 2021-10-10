@@ -42,6 +42,18 @@ public class ComparatorDemo {
         Collections.sort(cars,carComparatorLambda);
         System.out.println(".....using lambda");
         print(cars);
+
+        //sort the cars based on year of manufactured year
+        System.out.println("sort the cars based on year of manufactured year");
+        Collections.sort(cars,Comparator.comparing(Car::getYearOfManufacture));
+        print(cars);
+
+        //sort the cars based number plates in reverse order
+        System.out.println("sort the cars based number plates in reverse order");
+        Comparator<Car> carComparatorNoPlate = Comparator.comparing(Car::getNumberPlate);
+        Collections.sort(cars,carComparatorNoPlate.reversed());
+        print(cars);
+
     }
 
     public static void print(List<Car> cars){
